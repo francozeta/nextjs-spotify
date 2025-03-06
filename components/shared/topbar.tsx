@@ -54,7 +54,7 @@ export function Topbar() {
           </button>
           <button className="bg-[#121212] rounded-full w-8 h-8 flex items-center justify-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%7B846B1BFF-A075-403A-9BBF-88D7362E9885%7D-rJn4M1g0bADpUYvt7gH1irsaGpRYSK.png"
+              src="https://avatars.githubusercontent.com/u/124936792?v=4"
               alt="User profile"
               className="w-7 h-7 rounded-full object-cover"
             />

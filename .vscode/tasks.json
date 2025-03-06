@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "pnpm: dev",
+      "type": "shell",
+      "command": "pnpm",
+      "args": [
+        "run",
+        "dev"
+      ],
+      "problemMatcher": [],
+      "detail": "next dev --turbopack",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}

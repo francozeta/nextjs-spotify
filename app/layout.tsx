@@ -27,13 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.className} antialiased`}>
         <div className="h-screen flex flex-col">
           <Topbar />
-          <div className="flex-1 flex overflow-hidden">
+          <div className="flex-1 flex overflow-hidden bg-black px-2 gap-2">
             <Sidebar />
-            <main className="flex-1 overflow-auto bg-neutral-700">
-              <div className="p-2">{children}</div>
+            <main className="flex-1 overflow-auto bg-black">
+              <div className="p-2 bg-amber-500 rounded-xl overflow-hidden">{children}</div>
             </main>
           </div>
           <Player />
