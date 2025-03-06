@@ -38,5 +38,22 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  
+  /* Spotify-like scrollbar styles */
+  .spotify-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .spotify-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .spotify-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+  
+  .spotify-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
 }
-
