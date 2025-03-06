@@ -32,8 +32,8 @@ export default function RootLayout({
           <Topbar />
           <div className="flex-1 flex overflow-hidden bg-black px-2 pb-2 gap-2">
             <Sidebar />
-            <main className="flex-1 overflow-auto bg-black">
-              <div className="p-2 bg-amber-500 rounded-xl overflow-hidden">{children}</div>
+            <main className="flex-1 rounded-xl bg-amber-500 overflow-hidden">
+              <div className="h-full overflow-y-auto spotify-scrollbar p-2">{children}</div>
             </main>
           </div>
           <Player />

@@ -6,7 +6,7 @@ import { LibraryIcon } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import { GoPlus } from "react-icons/go"
 import { MdArrowForward } from "react-icons/md"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { SidebarItem } from "@/components/sidebar-item"
 
 const scrollbarStyles = `
@@ -78,11 +78,17 @@ const playlists = [
 
 export const Sidebar: React.FC<SidebarProps> = () => {
   const [isLibraryActive, setIsLibraryActive] = useState(true)
-  const [isDragging, setIsDragging] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!scrollContainerRef.current) return
+
     setIsDragging(true)
+    setStartX(e.clientX)
+    setScrollLeft(scrollContainerRef.current.scrollLeft)
   }
 
   const handleMouseUp = () => {
@@ -90,13 +96,26 @@ export const Sidebar: React.FC<SidebarProps> = () => {
   }
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging) return
-    const container = scrollContainerRef.current
-    if (!container) return
+    if (!isDragging || !scrollContainerRef.current) return
 
-    const scrollSpeed = 2
-    container.scrollLeft -= e.movementX * scrollSpeed
+    e.preventDefault()
+    const x = e.clientX
+    const walk = (startX - x) * 1.5 // Scroll speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft + walk
   }
+
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      setIsDragging(false)
+    }
+
+    // Add global event listeners to handle mouse up outside the component
+    document.addEventListener("mouseup", handleGlobalMouseUp)
+
+    return () => {
+      document.removeEventListener("mouseup", handleGlobalMouseUp)
+    }
+  }, [])
 
   return (
     <>
