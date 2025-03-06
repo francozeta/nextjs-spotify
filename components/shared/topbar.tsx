@@ -24,7 +24,7 @@ export function Topbar() {
         <div className="relative max-w-[400px]">
           <div className="flex items-center bg-[#242424] rounded-full overflow-hidden p-[2px]">
             <div className="flex items-center pl-3">
-              <BiSearch className="text-neutral-400 text-lg" />
+              <BiSearch className="text-neutral-400 text-xl" />
             </div>
             <input
               type="text"
@@ -33,8 +33,8 @@ export function Topbar() {
             />
             <div className="flex items-center">
               <div className="w-[1px] h-6 bg-neutral-700 mx-1"></div>
-              <button className="p-2 hover:text-white text-neutral-400">
-                <BsVinyl className="text-lg" />
+              <button className="p-2 hover:text-white text-neutral-400 cursor-pointer">
+                <BsVinyl className="text-xl" />
               </button>
             </div>
           </div>
@@ -45,14 +45,14 @@ export function Topbar() {
 
         {/* Right section */}
         <div className="flex items-center gap-4">
-          <button className="bg-[#121212] text-sm font-medium px-3 py-1 rounded-full flex items-center gap-1">
+          <button className="bg-[#121212] text-sm font-medium px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer">
             <FaArrowDown className="text-xs" />
             <span>Instalar aplicación</span>
           </button>
-          <button className="p-1">
+          <button className="p-1 cursor-pointer">
             <IoMdNotificationsOutline className="text-2xl" />
           </button>
-          <button className="bg-[#121212] rounded-full w-8 h-8 flex items-center justify-center">
+          <button className="bg-[#121212] rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">
             <img
               src="https://avatars.githubusercontent.com/u/124936792?v=4"
               alt="User profile"

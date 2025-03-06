@@ -1,6 +1,6 @@
 export function Player() {
   return (
-    <footer className="h-20 bg-blue-900 text-white flex items-center justify-center">
+    <footer className="h-20 bg-blue-900 text-white flex items-center justify-center p-2">
       <div className="text-2xl font-bold">player.tsx</div>
     </footer>
   )
