@@ -10,11 +10,14 @@ import Image from "next/image"
 import { useSession, signOut, signIn } from "next-auth/react"
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export function Topbar() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const [showUserMenu, setShowUserMenu] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
+
+  // TODO: Implementar un estado de carga para evitar el flash de contenido no autenticado
 
   // Cerrar el menú cuando se hace clic fuera de él
   useEffect(() => {
@@ -72,7 +75,9 @@ export function Topbar() {
             <IoMdNotificationsOutline className="text-2xl" />
           </button>
 
-          {session?.user ? (
+          {status === "loading" ? (
+            <Skeleton className="w-8 h-8 rounded-full bg-[#121212]" />
+          ) : session?.user ? (
             <div className="relative" ref={menuRef}>
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
