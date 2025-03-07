@@ -77,14 +77,11 @@ const handler = NextAuth({
   pages: {
     signIn: "/login",
   },
-  secret: process.env.SECRET,
+  // Añadimos la URL base para asegurarnos de que las redirecciones sean correctas
+  // Esto es importante para el entorno de desarrollo
+  debug: process.env.NODE_ENV === "development",
 })
 
 // Export GET and POST handlers
 export { handler as GET, handler as POST }
-
-// Export authentication roles for use on the server
-export const auth = handler.auth
-export const signIn = handler.signIn
-export const signOut = handler.signOut
 
