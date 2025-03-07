@@ -49,39 +49,12 @@ export default function LoginPage() {
         <div className="space-y-4">
           <Button
             variant="outline"
-            className="w-full bg-transparent border border-neutral-700 text-white hover:bg-neutral-800 flex items-center justify-center gap-2 py-5"
+            className="w-full bg-transparent border border-neutral-700 text-white hover:bg-neutral-800 flex items-center justify-center gap-2 py-5 cursor-pointer"
             onClick={handleSpotifyLogin}
             disabled={isLoading}
           >
             <FaSpotify className="text-lg" />
             <span>Continuar con Spotify</span>
-          </Button>
-
-          <Button
-            variant="outline"
-            className="w-full bg-transparent border border-neutral-700 text-white hover:bg-neutral-800 flex items-center justify-center gap-2 py-5"
-            disabled={isLoading}
-          >
-            <FaGoogle className="text-lg" />
-            <span>Continuar con Google</span>
-          </Button>
-
-          <Button
-            variant="outline"
-            className="w-full bg-transparent border border-neutral-700 text-white hover:bg-neutral-800 flex items-center justify-center gap-2 py-5"
-            disabled={isLoading}
-          >
-            <FaFacebook className="text-lg" />
-            <span>Continuar con Facebook</span>
-          </Button>
-
-          <Button
-            variant="outline"
-            className="w-full bg-transparent border border-neutral-700 text-white hover:bg-neutral-800 flex items-center justify-center gap-2 py-5"
-            disabled={isLoading}
-          >
-            <FaApple className="text-lg" />
-            <span>Continuar con Apple</span>
           </Button>
         </div>
 
