@@ -127,12 +127,12 @@ export const Sidebar: React.FC<SidebarProps> = () => {
         <div className="p-4 flex flex-col gap-4 relative shadow-md">
           <div className="flex items-center justify-between">
             <button
-              className="flex items-center gap-2 hover:text-neutral-50 transition-colors cursor-pointer"
+              className="flex items-center gap-2 text-neutral-50 transition-colors cursor-pointer"
               onClick={() => setIsLibraryActive(!isLibraryActive)}
             >
               <LibraryIcon
                 isActive={isLibraryActive}
-                className={cn("w-6 h-6", isLibraryActive ? "text-white" : "text-neutral-400")}
+                className={cn("w-6 h-6", isLibraryActive ? "text-neutral-50" : "text-neutral-400", "hover:text-neutral-50")}
               />
               <span className="text-sm font-bold">Tu biblioteca</span>
             </button>
