@@ -162,3 +162,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Styles for the scroll effect */
+.scroll-header-effect {
+  transition: background-color 0.3s ease;
+}
+
+.scroll-header-effect.scrolled {
+  background-color: rgb(64, 64, 64); /* neutral-700 */
+}
+
+.scroll-header-effect:not(.scrolled) {
+  background-color: rgb(23, 23, 23); /* neutral-900 */
+}

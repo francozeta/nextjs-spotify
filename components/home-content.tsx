@@ -29,13 +29,13 @@ export function HomeContent({ filterTabs: initialTabs, items }: HomeContentProps
   }
 
   return (
-    <div className="flex flex-col gap-6 p-6">
+    <div className="flex flex-col gap-6 ">
       <TopHeader filterTabs={filterTabs} onTabChange={handleTabChange} />
 
-      <div className="flex flex-col gap-6 p-4 md:p-6">
+      <div className="flex flex-col gap-6 p-0 md:p-0">
         <section>
-          <h2 className="text-2xl font-bold mb-4">Escuchados recientemente</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+          <h2 className="text-2xl font-bold mb-4 pl-[16px]">Escuchados recientemente</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5">
             {items.slice(0, 6).map((item) => (
               <div key={item.id} className="h-full">
                 <MainItem
