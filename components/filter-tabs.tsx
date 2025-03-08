@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useRef } from "react"
 import { cn } from "@/lib/utils"
 
 interface FilterTab {
@@ -11,22 +11,12 @@ interface FilterTab {
 interface FilterTabsProps {
   tabs: FilterTab[]
   onTabChange?: (index: number) => void
+  isInHeader?: boolean
 }
 
-export function FilterTabs({ tabs: initialTabs, onTabChange }: FilterTabsProps) {
+export function FilterTabs({ tabs: initialTabs, onTabChange, isInHeader = false }: FilterTabsProps) {
   const [tabs, setTabs] = useState<FilterTab[]>(initialTabs)
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      setIsScrolled(scrollPosition > 10)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const handleTabClick = (index: number) => {
     const newTabs = tabs.map((tab, i) => ({
@@ -41,17 +31,17 @@ export function FilterTabs({ tabs: initialTabs, onTabChange }: FilterTabsProps) 
   return (
     <div
       className={cn(
-        "sticky top-0 z-10 py-4 px-2 flex items-center transition-all duration-300",
-        isScrolled ? "bg-neutral-900" : "bg-neutral-900",
+        "flex items-center",
+        !isInHeader && "py-3 sticky top-0 z-10 bg-gradient-to-b from-green-900/40 via-neutral-900/90 to-neutral-900",
       )}
     >
-      <div className="flex gap-2 overflow-x-auto no-scrollbar">
+      <div ref={scrollContainerRef} className="flex gap-2 overflow-x-auto no-scrollbar px-2">
         {tabs.map((tab, index) => (
           <button
             key={tab.label}
             onClick={() => handleTabClick(index)}
             className={cn(
-              "px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors cursor-pointer",
+              "px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
               tab.active ? "bg-white text-black" : "bg-neutral-800/80 text-white hover:bg-neutral-700",
             )}
           >
