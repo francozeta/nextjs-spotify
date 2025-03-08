@@ -30,11 +30,11 @@ const scrollbarStyles = `
 
 type SidebarProps = {}
 
-const filterButtons = [
-  { label: "Música", active: true },
-  { label: "Podcasts y programas", active: false },
+const filterTabs = [
+  { label: "Playlists", active: true },
   { label: "Artistas", active: false },
   { label: "Álbumes", active: false },
+  { label: "Podcasts y programas", active: false },
 ]
 //TODO: Implement the playlists API
 const playlists = [
@@ -154,7 +154,7 @@ export const Sidebar: React.FC<SidebarProps> = () => {
             onMouseLeave={() => setIsDragging(false)}
           >
             <div ref={scrollContainerRef} className="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth">
-              {filterButtons.map((button) => (
+              {filterTabs.map((button) => (
                 <button
                   key={button.label}
                   className={cn(
