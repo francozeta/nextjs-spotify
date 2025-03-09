@@ -119,9 +119,7 @@ export const Sidebar: React.FC<SidebarProps> = () => {
 
   return (
     <>
-      <style jsx global>
-        {scrollbarStyles}
-      </style>
+
       <aside className="w-[313px] bg-neutral-900 flex flex-col h-full rounded-xl overflow-hidden">
         {/* Add shadow to the top section */}
         <div className="p-4 flex flex-col gap-4 relative shadow-md">

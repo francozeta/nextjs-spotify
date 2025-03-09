@@ -27,7 +27,7 @@ export default function RootLayout({
       <div className="flex-1 flex overflow-hidden bg-black px-2 pb-2 gap-2">
         <Sidebar />
         <main className="flex-1 rounded-xl bg-neutral-900 text-neutral-50 overflow-hidden">
-          <div className="h-full overflow-y-auto overflow-x-hidden spotify-scrollbar">{children}</div>
+          <div className="h-full ">{children}</div>
         </main>
       </div>
       <Player />
