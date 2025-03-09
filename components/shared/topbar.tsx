@@ -100,14 +100,14 @@ export function Topbar() {
 
               {/* Menú desplegable */}
               {showUserMenu && (
-                <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-[#282828] ring-1 ring-black ring-opacity-5">
-                  <div className="py-1">
+                <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-[#282828]  z-50 ">
+                  <div className="p-1 ">
                     <button
                       onClick={() => {
                         setShowUserMenu(false)
                         signOut()
                       }}
-                      className="w-full text-left px-4 py-2 text-sm text-white hover:bg-[#3E3E3E] transition-colors"
+                      className="w-full text-left px-4 py-2 text-sm text-white hover:bg-[#3E3E3E] transition-colors cursor-pointer rounded-sm"
                     >
                       Cerrar sesión
                     </button>

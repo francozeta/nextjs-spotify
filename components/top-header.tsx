@@ -9,8 +9,6 @@ interface TopHeaderProps {
 }
 
 export function TopHeader({ filterTabs, onTabChange }: TopHeaderProps) {
-
-
   return (
     <>
       <div

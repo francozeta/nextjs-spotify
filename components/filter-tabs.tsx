@@ -42,7 +42,7 @@ export function FilterTabs({ tabs: initialTabs, onTabChange, isInHeader = false 
             onClick={() => handleTabClick(index)}
             className={cn(
               "px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors cursor-pointer",
-              tab.active ? "bg-white text-black" : "bg-neutral-800/80 text-white hover:bg-neutral-700",
+              tab.active ? "bg-white text-black" : "bg-neutral-50/10 text-white hover:bg-neutral-50/20",
             )}
           >
             {tab.label}

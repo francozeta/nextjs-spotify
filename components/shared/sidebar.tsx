@@ -158,8 +158,8 @@ export const Sidebar: React.FC<SidebarProps> = () => {
                   className={cn(
                     "px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors select-none cursor-pointer",
                     button.active
-                      ? "bg-neutral-800 text-white"
-                      : "bg-neutral-800/50 text-neutral-400 hover:bg-neutral-800 hover:text-white",
+                      ? "bg-neutral-800 text-white hover:bg-neutral-50/20"
+                      : "bg-neutral-50/10 text-neutral-50 hover:bg-neutral-50/20 hover:text-white",
                   )}
                 >
                   {button.label}
