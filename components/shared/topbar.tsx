@@ -1,7 +1,7 @@
 "use client"
 
 import { FaSpotify } from "react-icons/fa"
-import { GoHome } from "react-icons/go"
+import { GoHome, GoHomeFill } from "react-icons/go"
 import { IoMdNotificationsOutline } from "react-icons/io"
 import { BiSearch } from "react-icons/bi"
 import { BsVinyl } from "react-icons/bs"
@@ -11,15 +11,17 @@ import { useSession, signOut, signIn } from "next-auth/react"
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
+import { usePathname } from "next/navigation"
+import { MdOutlineNotifications } from "react-icons/md"
 
 export function Topbar() {
   const { data: session, status } = useSession()
   const [showUserMenu, setShowUserMenu] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+  const isRoot = pathname === "/"
 
-  // TODO: Implementar un estado de carga para evitar el flash de contenido no autenticado
-
-  // Cerrar el menú cuando se hace clic fuera de él
+  // Close menu when clicking outside it
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -34,33 +36,35 @@ export function Topbar() {
   }, [])
 
   return (
-    <header className="h-16 bg-black text-white flex items-center px-4">
+    <header className="h-16 bg-black text-white flex items-center px-6">
       <div className="flex items-center w-full gap-2">
         {/* Left section - Logo */}
         <Link href="/" className="text-white mr-2">
-          <FaSpotify className="text-[29px]" />
+          <FaSpotify className="text-3xl" />
         </Link>
 
         {/* Home icon */}
-        <Link href="/" className="bg-[#121212] p-2 rounded-full mr-2">
-          <GoHome className="text-2xl" />
+        <Link href="/" className="bg-neutral-800  p-2 rounded-full mr-2 hover:scale-105 transition-transform" >
+          {
+            isRoot ? <GoHomeFill className="text-white text-2xl" /> : <GoHome className="text-neutral-400 text-2xl" />
+          }
         </Link>
 
         {/* Search bar */}
-        <div className="relative max-w-[400px]">
-          <div className="flex items-center bg-[#242424] rounded-full overflow-hidden p-[2px]">
+        <div className="relative w-[500px]">
+          <div className="flex items-center bg-neutral-800 rounded-full overflow-hidden p-[4px]">
             <div className="flex items-center pl-3">
-              <BiSearch className="text-neutral-400 text-xl" />
+              <BiSearch className="text-neutral-400 text-2xl" />
             </div>
             <input
               type="text"
               placeholder="¿Qué quieres reproducir?"
-              className="bg-transparent text-sm text-white py-2 px-2 w-full focus:outline-none"
+              className="bg-transparent text-neutral-50 py-2 px-2 w-full focus:outline-none "
             />
             <div className="flex items-center">
               <div className="w-[1px] h-6 bg-neutral-700 mx-1"></div>
-              <button className="p-2 hover:text-white text-neutral-400 cursor-pointer">
-                <BsVinyl className="text-xl" />
+              <button className="p-2 hover:text-neutral-50 text-neutral-400 cursor-pointer hover:scale-105 transition-transform">
+                <BsVinyl className="text-2xl" />
               </button>
             </div>
           </div>
@@ -72,7 +76,7 @@ export function Topbar() {
         {/* Right section */}
         <div className="flex items-center gap-4">
           <button className="p-1 cursor-pointer">
-            <IoMdNotificationsOutline className="text-2xl" />
+            <MdOutlineNotifications className="text-2xl text-neutral-400 hover:text-neutral-50 hover:scale-105 transition-transform" />
           </button>
 
           {status === "loading" ? (
@@ -86,7 +90,7 @@ export function Topbar() {
                 {session.user.image ? (
                   <Image
                     src={session.user.image || "/placeholder.svg"}
-                    alt={session.user.name || "Usuario"}
+                    alt={session.user.name || "User"}
                     width={28}
                     height={28}
                     className="rounded-full object-cover"
@@ -98,7 +102,7 @@ export function Topbar() {
                 )}
               </button>
 
-              {/* Menú desplegable */}
+              {/* Dropdown menu */}
               {showUserMenu && (
                 <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-[#282828]  z-50 ">
                   <div className="p-1 ">
@@ -109,7 +113,7 @@ export function Topbar() {
                       }}
                       className="w-full text-left px-4 py-2 text-sm text-white hover:bg-[#3E3E3E] transition-colors cursor-pointer rounded-sm"
                     >
-                      Cerrar sesión
+                      Sign out
                     </button>
                   </div>
                 </div>
@@ -120,7 +124,7 @@ export function Topbar() {
               onClick={() => signIn("spotify")}
               className="bg-white text-black hover:bg-neutral-200 px-4 py-1 rounded-full text-sm font-medium"
             >
-              Iniciar sesión
+              Login
             </Button>
           )}
         </div>
