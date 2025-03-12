@@ -21,7 +21,7 @@ export function MainItem({ title, subtitle, imageUrl, href, isActive = false }: 
     <Link
       href={href}
       className={cn(
-        "flex flex-col gap-3 p-4 rounded-md transition-all duration-300 bg-neutral-900 hover:bg-neutral-800 group relative",
+        "flex flex-col gap-3 p-2 md:p-[8px] lg:p-[14px] rounded-md transition-all duration-300 bg-neutral-900 hover:bg-neutral-800 group relative",
         "h-full max-w-[240px]",
         isActive && "bg-neutral-800",
       )}
@@ -42,7 +42,7 @@ export function MainItem({ title, subtitle, imageUrl, href, isActive = false }: 
         </div>
       </div>
       <div className="flex flex-col flex-1 min-w-0">
-        <h3 className={cn("text-base font-semibold line-clamp-1", isActive ? "text-white" : "text-neutral-100")}>
+        <h3 className={cn("text-base font-semibold line-clamp-2", isActive ? "text-white" : "text-neutral-100")}>
           {title}
         </h3>
         {subtitle && <p className="text-sm text-neutral-400 line-clamp-2 mt-1">{subtitle}</p>}
@@ -50,4 +50,3 @@ export function MainItem({ title, subtitle, imageUrl, href, isActive = false }: 
     </Link>
   )
 }
-

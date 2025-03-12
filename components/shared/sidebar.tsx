@@ -9,55 +9,12 @@ import { useRef, useState, useEffect } from "react"
 import { SidebarItem } from "@/components/sidebar-item"
 import { AiOutlinePlus } from "react-icons/ai"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { filterTabsSidebar, playlists } from "@/lib/constants"
 
 type SidebarProps = {}
 
-const filterTabs = [
-  { label: "Playlists", active: true },
-  { label: "Artists", active: false },
-  { label: "Albums", active: false },
-  { label: "Podcasts & Shows", active: false },
-]
-
 //TODO: Implement the playlists API
-const playlists = [
-  {
-    id: "1",
-    title: "dreaming with",
-    subtitle: "Playlist • franxo",
-    imageUrl: "https://avatars.githubusercontent.com/u/124936792?v=4",
-    href: "/playlist/1",
-  },
-  {
-    id: "2",
-    title: "!dissociate",
-    subtitle: "Playlist • franxo",
-    imageUrl: "https://avatars.githubusercontent.com/u/124936792?v=4",
-    href: "/playlist/2",
-  },
-  // Add more playlists for demonstration
-  {
-    id: "3",
-    title: "Chill Vibes",
-    subtitle: "Playlist • franxo",
-    imageUrl: "https://avatars.githubusercontent.com/u/124936792?v=4",
-    href: "/playlist/3",
-  },
-  {
-    id: "4",
-    title: "Focus Flow",
-    subtitle: "Playlist • franxo",
-    imageUrl: "https://avatars.githubusercontent.com/u/124936792?v=4",
-    href: "/playlist/4",
-  },
-  {
-    id: "5",
-    title: "Late Night Drive",
-    subtitle: "Playlist • franxo",
-    imageUrl: "https://avatars.githubusercontent.com/u/124936792?v=4",
-    href: "/playlist/5",
-  },
-]
+
 
 export const Sidebar: React.FC<SidebarProps> = () => {
   const [isExpanded, setIsExpanded] = useState(true)
@@ -176,7 +133,7 @@ export const Sidebar: React.FC<SidebarProps> = () => {
               onMouseLeave={() => setIsDragging(false)}
             >
               <div ref={scrollContainerRef} className="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth">
-                {filterTabs.map((button) => (
+                {filterTabsSidebar.map((button) => (
                   <button
                     key={button.label}
                     className={cn(
@@ -197,7 +154,7 @@ export const Sidebar: React.FC<SidebarProps> = () => {
 
         {/* Content area with playlist items */}
         <div ref={contentRef} className="flex-1 overflow-y-auto px-2 pb-4 spotify-scrollbar">
-          <div className={cn("space-y-2 mt-2", !isExpanded && "flex flex-col items-center")}>
+          <div className={cn("mt-2", !isExpanded && "flex flex-col items-center")}>
             {playlists.map((playlist) =>
               isExpanded ? (
                 <SidebarItem

@@ -15,8 +15,8 @@ export function SidebarItem({ title, subtitle, imageUrl, href, isActive = false 
     <Link
       href={href}
       className={cn(
-        "flex items-center gap-3 p-2 rounded-md transition-colors hover:bg-neutral-800/80",
-        isActive && "bg-neutral-800",
+        "flex items-center gap-3 p-2 rounded-md transition-colors hover:bg-neutral-50/10",
+        isActive && "bg-neutral-700/70 ",
       )}
     >
       <div className="relative w-12 h-12 shrink-0 overflow-hidden rounded-md">
